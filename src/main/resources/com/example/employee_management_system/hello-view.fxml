@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.employee_management_system.MainController"
+            stylesheets="@styles.css">
+
+    <top>
+        <MenuBar>
+            <Menu text="File">
+                <MenuItem text="Exit" onAction="#handleExit"/>
+            </Menu>
+            <Menu text="Sort">
+                <MenuItem text="By Experience" onAction="#handleSortByExperience"/>
+                <MenuItem text="By Salary" onAction="#handleSortBySalary"/>
+                <MenuItem text="By Rating" onAction="#handleSortByPerformance"/>
+            </Menu>
+            <Menu text="Filter">
+                <MenuItem text="By Name" onAction="#handleFilterByName"/>
+                <MenuItem text="By Department" onAction="#handleFilterByDepartment"/>
+                <MenuItem text="By Rating (>)" onAction="#handleFilterByHighPerformers"/>
+                <MenuItem text="By Salary (Range)" onAction="#handleFilterBySalaryRange"/>
+            </Menu>
+            <Menu text="Salary Actions">
+                <MenuItem text="Apply Raises" onAction="#handleGiveRaises"/>
+                <MenuItem text="Top Paid" onAction="#handleShowTopPaid"/>
+                <MenuItem text="AvgSalary (Dept)" onAction="#handleShowAverageDeptSalary"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <ScrollPane>
+            <GridPane fx:id="gridTable" hgap="5" vgap="5" style="-fx-padding: 5px;"/>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <GridPane hgap="10" vgap="10" style="-fx-padding: 5px;">
+            <!-- Form controls -->
+            <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="150"/>
+
+            <Label text="Dept:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="deptField" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="150"/>
+
+            <Label text="Salary:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="salaryField" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="150"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                <Button text="Add" onAction="#handleAddEmployee" prefWidth="80" styleClass="header-button"/>
+                <Button text="Delete" onAction="#handleDeleteEmployee" prefWidth="80" styleClass="header-button"/>
+                <Button text="Show All" onAction="#handleShowAllViaIterator" prefWidth="100" styleClass="header-button"/>
+                <Button text="Report" onAction="#handleGenerateConsoleReport" prefWidth="80" styleClass="header-button"/>
+            </HBox>
+        </GridPane>
+    </bottom>
+</BorderPane>
