@@ -1,6 +1,10 @@
 package com.example.employee_management_system;
 
 import com.example.employee_management_system.domain.Employee;
+import com.example.employee_management_system.exceptions.InvalidDepartmentException;
+import com.example.employee_management_system.exceptions.InvalidEmployeeArgumentException;
+import com.example.employee_management_system.exceptions.InvalidNameException;
+import com.example.employee_management_system.exceptions.InvalidSalaryException;
 import com.example.employee_management_system.repository.EmployeeRepository;
 import com.example.employee_management_system.service.*;
 import javafx.fxml.FXML;
@@ -123,10 +127,14 @@ public class MainController {
                 refreshGridTable();
                 clearFormFields();
             } else {
-                showAlert("Error", "Employee with this ID already exists");
+                showAlert("Error", "Employee cannot be null");
             }
         } catch (NumberFormatException e) {
             showAlert("Input Error", "Please enter valid salary");
+        } catch (InvalidEmployeeArgumentException e) {
+            showAlert("Input Error", e.getMessage());
+        } catch (Exception e) {
+            showAlert("Error", "Failed to add employee");
         }
     }
 

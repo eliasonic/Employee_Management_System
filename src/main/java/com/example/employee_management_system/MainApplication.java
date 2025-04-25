@@ -1,5 +1,8 @@
 package com.example.employee_management_system;
 
+import com.example.employee_management_system.domain.Employee;
+import com.example.employee_management_system.exceptions.EmployeeNotFoundException;
+import com.example.employee_management_system.exceptions.InvalidEmployeeArgumentException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +23,6 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+//        launch(args);
     }
 }

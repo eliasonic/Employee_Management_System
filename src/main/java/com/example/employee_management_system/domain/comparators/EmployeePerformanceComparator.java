@@ -11,6 +11,13 @@ import java.util.Comparator;
 public class EmployeePerformanceComparator<T> implements Comparator<Employee<T>> {
     @Override
     public int compare(Employee<T> emp1, Employee<T> emp2) {
-        return Double.compare(emp2.getPerformanceRating(), emp1.getPerformanceRating());
+        if (emp1 == null || emp2 == null) {
+            throw new IllegalArgumentException("Employees cannot be null");
+        }
+
+        return Double.compare(
+                emp2.getPerformanceRating() != null ? emp2.getPerformanceRating() : 0.0,
+                emp1.getPerformanceRating() != null ? emp1.getPerformanceRating() : 0.0
+        );
     }
 }
