@@ -19,7 +19,7 @@ public class EmployeeRepository<T> {
      * @return {@code true} if the employee was successfully saved, {@code false} otherwise
      */
     public boolean save(Employee<T> employee) {
-        if (employee == null || database.containsKey(employee.getEmployeeId())) {
+        if (employee == null) {
             return false;
         }
         database.put(employee.getEmployeeId(), employee);
