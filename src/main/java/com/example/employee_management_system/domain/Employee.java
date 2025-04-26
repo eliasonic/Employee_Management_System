@@ -1,6 +1,7 @@
 package com.example.employee_management_system.domain;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 /**
  * Represents an employee with generic ID support.
@@ -71,5 +72,25 @@ public class Employee<T> implements Comparable<Employee<T>> {
                 yearsOfExperience != null ? yearsOfExperience : 0,
                 isActive
         );
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee<?> employee = (Employee<?>) o;
+        return Objects.equals(employeeId, employee.employeeId) &&
+                Objects.equals(name, employee.name) &&
+                Objects.equals(department, employee.department) &&
+                Objects.equals(salary, employee.salary) &&
+                Objects.equals(performanceRating, employee.performanceRating) &&
+                Objects.equals(yearsOfExperience, employee.yearsOfExperience) &&
+                Objects.equals(isActive, employee.isActive);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(employeeId, name, department, salary,
+                performanceRating, yearsOfExperience, isActive);
     }
 }

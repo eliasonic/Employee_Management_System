@@ -21,6 +21,12 @@ public class EmployeeValidator<T> {
         this.validateDepartment(employee.getDepartment());
     }
 
+    /**
+     * Validates the name of an employee
+     *
+     * @param name
+     * @throws InvalidNameException if the name is invalid
+     */
     private void validateName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new InvalidNameException("Employee name cannot be empty");
@@ -31,6 +37,12 @@ public class EmployeeValidator<T> {
         }
     }
 
+    /**
+     * Validates the department of an employee
+     *
+     * @param department
+     * @throws InvalidDepartmentException if the department is invalid
+     */
     private void validateDepartment(String department) {
         if (department == null || department.trim().isEmpty()) {
             throw new InvalidDepartmentException("Department cannot be empty");
@@ -41,6 +53,12 @@ public class EmployeeValidator<T> {
         }
     }
 
+    /**
+     * Validates the salary of an employee
+     *
+     * @param salary
+     * @throws InvalidSalaryException if the salary is invalid
+     */
     private void validateSalary(Double salary) {
         if (salary == null) {
             throw new InvalidSalaryException("Salary cannot be empty");

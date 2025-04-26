@@ -44,8 +44,19 @@ public class EmployeeSortService<T> {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Returns all employees sorted by performance rating in descending order.
+     * Uses {@link EmployeePerformanceComparator} for sorting.
+     *
+     * @return a new {@link List} of employees sorted by performance rating
+     * @throws IllegalStateException if no employees are found to sort
+     */
     public List<Employee<T>> sortByPerformance() {
-        return repository.findAll().stream()
+        List<Employee<T>> employees = repository.findAll();
+        if (employees.isEmpty()) {
+            throw new IllegalStateException("No employees found to sort.");
+        }
+        return employees.stream()
                 .sorted(new EmployeePerformanceComparator<>())
                 .collect(Collectors.toList());
     }
